@@ -1,5 +1,5 @@
 use ai_digest::{process_files, utils::read_ignore_file};
-use clap::{Arg, Command};
+use clap::{Arg, Command,ArgAction};
 
 fn main() -> std::io::Result<()> {
     let matches = Command::new("ai-digest")
@@ -24,17 +24,21 @@ fn main() -> std::io::Result<()> {
         .arg(
             Arg::new("no-default-ignores")
                 .long("no-default-ignores")
-                .help("Disable default ignore patterns"),
+                .help("Disable default ignore patterns")
+                .action(ArgAction::SetTrue),
+
         )
         .arg(
             Arg::new("whitespace-removal")
                 .long("whitespace-removal")
-                .help("Enable whitespace removal"),
+                .help("Enable whitespace removal")
+                .action(ArgAction::SetTrue),
         )
         .arg(
             Arg::new("show-output-files")
                 .long("show-output-files")
-                .help("Display a list of files included in the output"),
+                .help("Display a list of files included in the output")
+                .action(ArgAction::SetTrue),
         )
         .arg(
             Arg::new("ignore-file")
@@ -51,7 +55,12 @@ fn main() -> std::io::Result<()> {
     let whitespace_removal = matches.contains_id("whitespace-removal");
     let show_output_files = matches.contains_id("show-output-files");
     let ignore_file = matches.get_one::<String>("ignore-file").unwrap();
-
+    println!("Input directory: {}", input_dir);
+    println!("Output file: {}", output_file);
+    println!("No default ignores: {}", no_default_ignores);
+    println!("Whitespace removal: {}", whitespace_removal);
+    println!("Show output files: {}", show_output_files);
+    println!("Ignore file: {}", ignore_file);
     let mut ignore_patterns: Vec<String> = if !no_default_ignores {
         vec![
             "target",                 // Rust

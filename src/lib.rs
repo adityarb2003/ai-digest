@@ -85,7 +85,6 @@ pub fn process_files(
     drop(tx);
 
     let mut output = File::create(output_file)?;
-    writeln!(output, "# Codebase Aggregation\n")?;
 
     for (path, content) in rx {
         if show_output_files {
