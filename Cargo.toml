@@ -1,8 +1,16 @@
 [package]
 name = "ai-digest"
 version = "0.1.0"
-authors = ["Aditya <adityabhatperdoor@gmail.com>"]
+authors = ["Aditya Bhat <adityabhatperdoor@gmail.com>"]
 edition = "2021"
+description = "A CLI tool that aggregates your codebase into a single Markdown file for use with Claude Projects or custom ChatGPTs."
+license = "MIT"
+repository = "https://github.com/adityarb2003/ai-digest"
+homepage = "https://github.com/adityabr2003/ai-digest"
+readme = "README.md"
+keywords = ["CLI", "Markdown"]
+categories = ["command-line-utilities", "development-tools"]
+
 
 [dependencies]
 clap = "4.5.23"
