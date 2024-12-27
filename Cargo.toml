@@ -1,6 +1,6 @@
 [package]
 name = "ai-digest"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Aditya Bhat <adityabhatperdoor@gmail.com>"]
 edition = "2021"
 description = "A CLI tool that aggregates your codebase into a single Markdown file for use with Claude Projects or custom ChatGPTs."
