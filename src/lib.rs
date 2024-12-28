@@ -5,10 +5,8 @@ use walkdir::WalkDir;
 use std::sync::mpsc;
 use rayon::prelude::*;
 
-// Re-export core functionality
 pub use crate::utils::*;
 
-// Internal utility module
 pub mod utils {
     use super::*;
 
@@ -34,9 +32,10 @@ pub mod utils {
     pub fn handle_file_content(path: &Path, whitespace_removal: bool) -> io::Result<String> {
         let content = fs::read_to_string(path)?;
         let processed_content = if whitespace_removal {
+            // Remove extra leading/trailing whitespaces but preserve indentation
             content
                 .lines()
-                .map(str::trim)
+                .map(str::trim_start)
                 .collect::<Vec<_>>()
                 .join("\n")
         } else {
@@ -46,7 +45,6 @@ pub mod utils {
     }
 }
 
-// Process files and generate markdown output
 pub fn process_files(
     input_dir: &str,
     output_file: &str,
