@@ -89,7 +89,7 @@ pub fn process_files(
             println!("Including file: {}", path.display());
         }
         writeln!(output, "## File: {}\n", path.display())?;
-        writeln!(output, "```\n{}\n```\n", content)?;
+        writeln!(output, "````\n{}\n````\n", content)?;
     }
 
     Ok(())
